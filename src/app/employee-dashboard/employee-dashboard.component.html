@@ -2,12 +2,12 @@
     <div class="container-fluid">
         <h1 class="text-white">Angular CRUD</h1>
         <div class="d-flex">
-            <button class="btn btn-success">Add Employee</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add Employee</button>
         </div>
     </div>
 </nav>
 
-<table class="table table-responsive m-3">
+<table class="table table-responsive mt-3">
     <thead>
         <tr>
             <th scope="col">Employee ID</th>
@@ -22,7 +22,7 @@
 
     <tbody>
         <tr>
-            <td>11:00</td>
+            <td>25:00</td>
             <td></td>
             <td></td>
             <td></td>
@@ -36,3 +36,47 @@
         </tr>
     </tbody>
 </table>
+  
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup] = "formValue">
+                    <div class="mb-2">
+                        <label for="exampleInputEmail1">First Name</label>
+                        <input type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
+                    </div>
+                    <div class="mb-2">
+                        <label for="exampleInputPassword1">Last Name</label>
+                        <input type="text" formControlName="lastName"  class="form-control" id="exampleInputPassword1" placeholder="Last Name">
+                    </div>
+                    <div class="mb-2">
+                        <label for="exampleInputPassword1">Email ID</label>
+                        <input type="text" formControlName="email" class="form-control" id="exampleInputPassword1" placeholder="example@gmail.com">
+                    </div>
+                    <div class="mb-2">
+                        <label for="exampleInputPassword1">Mobile No.</label>
+                        <input type="text" formControlName="mobile" class="form-control" id="exampleInputPassword1" placeholder="+254 ...">
+                    </div>
+                    <div class="mb-2">
+                        <label for="exampleInputPassword1">Salary</label>
+                        <input type="text" formControlName="salary" class="form-control" id="exampleInputPassword1" placeholder="ksh">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
