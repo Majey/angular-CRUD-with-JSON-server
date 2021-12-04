@@ -2,17 +2,14 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "firstName": "Kevin",
+      "lastName": "Erick",
+      "email": "k@gmail.com",
+      "mobile": "0713849900",
+      "salary": "60000"
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
+  "comments": [],
   "profile": {
     "name": "typicode"
   }

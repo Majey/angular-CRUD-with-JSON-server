@@ -2,12 +2,12 @@
     <div class="container-fluid">
         <h1 class="text-white">Angular CRUD</h1>
         <div class="d-flex">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add Employee</button>
+            <button (click)="clickAddEmployee()" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add Employee</button>
         </div>
     </div>
 </nav>
 
-<table class="table table-responsive mt-3">
+<table class="table mt-3">
     <thead>
         <tr>
             <th scope="col">Employee ID</th>
@@ -21,16 +21,16 @@
     </thead>
 
     <tbody>
-        <tr>
-            <td>25:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr *ngFor = "let row of employeeData">
+            <td>{{row.id}}</td>
+            <td>{{row.firstName}}</td>
+            <td>{{row.lastName}}</td>            
+            <td>{{row.email}}</td>
+            <td>{{row.mobile}}</td>
+            <td>{{row.salary}}</td>
             <td>
-                <button class="btn btn-info">Edit</button>
-                <button class="btn btn-danger mx-3">Delete</button>
+                <button (click)="onEdit(row)" type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Edit</button>
+                <button (click)="deleteEmployee(row)" class="btn btn-danger mx-3">Delete</button>
             </td>
 
         </tr>
@@ -51,29 +51,30 @@
                 <form [formGroup] = "formValue">
                     <div class="mb-2">
                         <label for="exampleInputEmail1">First Name</label>
-                        <input type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
+                        <input type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-2">
                         <label for="exampleInputPassword1">Last Name</label>
-                        <input type="text" formControlName="lastName"  class="form-control" id="exampleInputPassword1" placeholder="Last Name">
+                        <input type="text" formControlName="lastName"  class="form-control" id="exampleInputPassword1">
                     </div>
                     <div class="mb-2">
                         <label for="exampleInputPassword1">Email ID</label>
-                        <input type="text" formControlName="email" class="form-control" id="exampleInputPassword1" placeholder="example@gmail.com">
+                        <input type="email" formControlName="email" class="form-control" id="exampleInputPassword1">
                     </div>
                     <div class="mb-2">
                         <label for="exampleInputPassword1">Mobile No.</label>
-                        <input type="text" formControlName="mobile" class="form-control" id="exampleInputPassword1" placeholder="+254 ...">
+                        <input type="text" formControlName="mobile" class="form-control" id="exampleInputPassword1">
                     </div>
                     <div class="mb-2">
                         <label for="exampleInputPassword1">Salary</label>
-                        <input type="text" formControlName="salary" class="form-control" id="exampleInputPassword1" placeholder="ksh">
+                        <input type="text" formControlName="salary" class="form-control" id="exampleInputPassword1" >
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add</button>
+                <button id="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button (click) ="postEmployeeDetails()" *ngIf="showAddButton" type="button" class="btn btn-primary">Add</button>
+                <button (click) ="updateEmployeeDetails()" *ngIf="showUpdateButton" type="button" class="btn btn-success">Update</button>
             </div>
         </div>
     </div>
